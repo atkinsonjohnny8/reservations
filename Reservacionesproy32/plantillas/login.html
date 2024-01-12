@@ -1,0 +1,99 @@
+{% extends 'plantillas/base3.html' %}
+
+{% block cuerpo %}
+
+
+
+
+<div class="container " id="marco" style="background-color:  rgba(255,255,255,146); position: relative; z-index: 3;">
+
+<!--SUPERPONER ESTOS DIVS PARA QUE UNO SEA LA SOMBRA DE OTRO--->
+
+	<div id="marco2" style=" background-color: grey; position: absolute; z-index: 2; border-radius: 4%;"> </div>
+
+	<div class="col-xs-8 col-xs-offset-4 col-sm-8 col-sm-offset-4 col-md-8 col-md-offset-4 col-lg-8 col-lg-offset-4 " >
+		<!---class="col-md-6 col-md-offset-3 " --->
+		<h3 style="color: black;">Login</h3>
+		
+	</div>		
+
+<!----<div class="col-xs-7 col-xs-offset-5 col-sm-7 col-xs-offset-5 col-md-7 col-md-offset-5 col-lg-7 col-lg-offset-5"><h5 style="font-weight: bold; color: grey;">Gracias por acceder</h5></div>--->
+
+<!---- <div class="col-xs-8 col-xs-offset-4 col-sm-8 col-sm-offset-4 col-md-8 col-md-offset-4 col-lg-8 col-lg-offset-4"><h5 style="font-style: italic; color: grey;">Atenci&oacuten, debe loguearse correctamente</h5></div>--->
+
+
+	
+		
+
+		<form action="" method="post">
+			<div class="col-xs-6 col-xs-offset-4 col-sm-6 col-sm-offset-4    col-md-6 col-md-offset-4 col-lg-6 col-lg-offset-4">
+
+				
+
+					{%csrf_token%}
+														
+		
+				<strong style="color: #001370; font-size: 16; text-decoration: none; text-align:left;">Nickname: </strong>
+
+							{%csrf_token%} {{ form.nick}}
+					
+				
+							<div></div>
+
+
+							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">	<p></p>
+        		<strong style="color: #001370; font-size: 16; text-decoration: none; text-align:left;">Password: </strong>
+
+						
+				    {%csrf_token%} {{ form.password}}
+
+				    	</div>
+				   
+
+			</div>	    	
+
+
+				<p></p>
+
+
+				<div class="col-xs-6 col-xs-offset-4 col-sm-6 col-sm-offset-4    col-md-6 col-md-offset-4 col-lg-6 col-lg-offset-4">
+					<p></p>
+					<input  type="submit" class="btn btn-success " value="Log in" style="font-size: 10; padding: 0.5em 1em; margin: 0 1em 0 0; border-radius: 2em; font-weight: bolder; ">
+
+
+
+					
+
+
+					<a class="btn btn-default btn-info" href="{% url 'registrar' %}">Register a new user </a>
+
+					
+				</div>
+
+				
+
+				
+			
+					
+			
+
+
+						
+
+		</form>
+
+	
+</div>	
+
+
+
+
+
+
+
+
+
+{% endblock  %}
+
+{% block javascript %}
+{% endblock  %}

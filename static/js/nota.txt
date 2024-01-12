@@ -1,0 +1,3 @@
+
+
+la version de vue es la 2.x

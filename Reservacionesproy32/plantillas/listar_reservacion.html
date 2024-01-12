@@ -1,0 +1,112 @@
+
+{% extends 'plantillas/base1.html' %}
+
+{% block cuerpo %}
+
+
+
+<br>
+<br>
+<br>
+			 
+	<div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3    col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3" >
+           
+		
+
+
+
+
+	<div class=" table-responsive text-nowrap ">		
+
+		<table id="tabla" class="table table-bordered table-striped w-auto">
+	        <thead>
+	            <tr>
+	             	<th class="text-center" id="paiz">Owner of booking</th>
+	                                     
+	                <th class="text-center" id="cell">Date</th>
+	                                   
+	                                      
+	            </tr>
+	        </thead>
+				
+			<tbody id="book-table">
+								<!---AQUI COMIENZA LAS OPCIONES DE PRESENTACION
+									PARA EN CASO DE QUE HAYA QUE MOSTRAR TODOS LOS USUARIOS O SIMPLEMENTE LOS USUARIOS QUE SON RESULTADOS DE UNA BUSQUEDA
+								  --->
+		
+				{% if lista %}
+								
+
+				{% for este in lista %}
+										
+				<tr class="table-info">		
+					<div class="" id="modal-usuario">
+												
+						<td>{{ este.nombre_huesped }}</td>
+												
+						<td>{{ este.fecha_reservacion }}</td>
+
+												
+						<td> 
+							<a  class="btn btn-info " style="font-size: 8; padding: 1em 1em; margin: 0 2em 0 0; border-radius: 2em;"  href="{% url 'borrar_reservacion' este.pk %}"> <span class="glyphicon glyphicon-trash"></span>	Delete 
+							</a> 
+						</td>
+						
+
+						<td> 
+							<a  class="btn btn-info " style="font-size: 8; padding: 1em 1em; margin: 0 2em 0 0; border-radius: 2em;"  href="{% url 'actualizar_reservacion' este.pk %}"> <span class="glyphicon glyphicon-trash"></span>	Update 
+							</a> 
+						</td>
+							
+				{% endfor %}
+										
+											
+							{% else %}
+     								 <p>No hay usuarios</p>
+				{% endif %}	
+								
+			
+<div  class="col-xs-7 col-xs-offset-4 col-sm-7 col-sm-offset-4 col-md-7 col-md-offset-4 col-lg-7 col-lg-offset-4">
+{% if lista.has_other_pages %}
+  <ul class="pagination" >
+    {% if lista.has_previous %}
+      <li><a href="?page={{ lista.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in lista.paginator.page_range %}
+      {% if lista.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if lista.has_next %}
+      <li><a href="?page={{ data.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+</div>
+
+
+</table>
+
+
+
+
+
+
+
+
+
+
+	</div>
+
+
+
+
+            
+{% endblock cuerpo %}
